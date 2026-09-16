@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,19 +60,13 @@ h1 .hl{background:var(--lime);padding:2px 12px 6px;display:inline-block;margin-b
   font-size:11px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--lime);font-weight:700;margin:0 0 18px
 }
-.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.node{
-  flex:1 1 150px;min-width:140px;text-align:center;border-radius:4px;
-  padding:14px 12px;font-weight:700;font-size:14px;line-height:1.25
-}
-.node.dark{background:#333330;color:#fff;border:1px solid #4a4a45}
-.node.lime{background:var(--lime);color:#1a1a1a}
-.arrow{flex:0 0 auto;color:var(--lime);font-size:12px;text-align:center;color:#cfcfc6}
-.arrow .glyph{display:block;color:var(--lime);font-size:16px;line-height:1}
-.loop{
-  margin-top:16px;border-top:1px solid var(--lime);padding-top:10px;
-  text-align:center;font-size:13px;color:#d9d9cf
-}
+.cycle-svg{display:block;width:100%;height:auto;overflow:visible}
+.cycle-svg.narrow{display:none}
+.cycle-svg text{font-family:'Lato',sans-serif}
+.cycle-svg .n-dark{fill:#fff;font-weight:700;font-size:16px;text-anchor:middle}
+.cycle-svg .n-lime{fill:#1a1a1a;font-weight:700;font-size:16px;text-anchor:middle}
+.cycle-svg .lbl{fill:#cfcfc6;font-size:13px;text-anchor:middle}
+.cycle-svg .lbl.start{text-anchor:start}
 
 /* ---------- main grid ---------- */
 .main{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:26px;align-items:start}
@@ -122,10 +117,8 @@ h1 .hl{background:var(--lime);padding:2px 12px 6px;display:inline-block;margin-b
 @media (max-width:640px){
   .wrap{padding:22px 14px 36px}
   .cols,.c2,.c3,.c4{grid-template-columns:1fr}
-  .flow{flex-direction:column;align-items:stretch}
-  .node{width:100%}
-  .arrow{padding:4px 0}
-  .arrow .glyph{transform:rotate(90deg)}
+  .cycle-svg.wide{display:none}
+  .cycle-svg.narrow{display:block}
   .note{margin-left:0;flex-basis:100%}
   .opp{margin-left:0;display:block}
 }
@@ -149,14 +142,69 @@ h1 .hl{background:var(--lime);padding:2px 12px 6px;display:inline-block;margin-b
 
     <section class="cycle">
       <p class="kicker">The cycle we are building</p>
-      <div class="flow">
-        <div class="node dark">Audience</div>
-        <div class="arrow"><span class="glyph">&#10230;</span>come for</div>
-        <div class="node lime">Hosts and<br>value-driven content</div>
-        <div class="arrow"><span class="glyph">&#10230;</span>they buy</div>
-        <div class="node lime">Relevant curation,<br>with video proof</div>
-      </div>
-      <p class="loop">&#8630; reviews and watch data make both sharper &#8631;</p>
+
+      <!-- desktop / tablet -->
+      <svg class="cycle-svg wide" viewBox="0 0 960 180" role="img" aria-label="Audience come for hosts and value-driven content, they buy relevant curation with video proof; reviews and watch data make both sharper">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#e8f26a"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="14" width="200" height="60" rx="4" fill="#333330" stroke="#4a4a45"/>
+        <text x="100" y="50" class="n-dark">Audience</text>
+
+        <rect x="300" y="14" width="250" height="60" rx="4" fill="#e8f26a"/>
+        <text x="425" y="40" class="n-lime">Hosts and</text>
+        <text x="425" y="60" class="n-lime">value-driven content</text>
+
+        <rect x="650" y="14" width="310" height="60" rx="4" fill="#e8f26a"/>
+        <text x="805" y="40" class="n-lime">Relevant curation,</text>
+        <text x="805" y="60" class="n-lime">with video proof</text>
+
+        <line x1="205" y1="44" x2="292" y2="44" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah)"/>
+        <text x="248" y="66" class="lbl">come for</text>
+
+        <line x1="555" y1="44" x2="642" y2="44" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah)"/>
+        <text x="598" y="66" class="lbl">they buy</text>
+
+        <path d="M100 74 L100 140 L805 140" fill="none" stroke="#e8f26a" stroke-width="2"/>
+        <line x1="425" y1="140" x2="425" y2="80" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah)"/>
+        <line x1="805" y1="140" x2="805" y2="80" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah)"/>
+        <text x="460" y="166" class="lbl">reviews and watch data make both sharper</text>
+      </svg>
+
+      <!-- mobile -->
+      <svg class="cycle-svg narrow" viewBox="-70 -10 480 370" role="img" aria-label="Audience come for hosts and value-driven content, they buy relevant curation with video proof; reviews and watch data make both sharper">
+        <defs>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#e8f26a"/>
+          </marker>
+        </defs>
+
+        <rect x="44" y="0" width="296" height="56" rx="4" fill="#333330" stroke="#4a4a45"/>
+        <text x="192" y="34" class="n-dark">Audience</text>
+
+        <rect x="44" y="118" width="296" height="64" rx="4" fill="#e8f26a"/>
+        <text x="192" y="145" class="n-lime">Hosts and</text>
+        <text x="192" y="167" class="n-lime">value-driven content</text>
+
+        <rect x="44" y="244" width="296" height="64" rx="4" fill="#e8f26a"/>
+        <text x="192" y="271" class="n-lime">Relevant curation,</text>
+        <text x="192" y="293" class="n-lime">with video proof</text>
+
+        <line x1="192" y1="60" x2="192" y2="112" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="202" y="92" class="lbl start">come for</text>
+
+        <line x1="192" y1="186" x2="192" y2="238" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="202" y="218" class="lbl start">they buy</text>
+
+        <path d="M44 28 L14 28 L14 150" fill="none" stroke="#e8f26a" stroke-width="2"/>
+        <line x1="14" y1="150" x2="38" y2="150" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah2)"/>
+        <path d="M14 150 L14 276" fill="none" stroke="#e8f26a" stroke-width="2"/>
+        <line x1="14" y1="276" x2="38" y2="276" stroke="#e8f26a" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="192" y="340" class="lbl">reviews and watch data make both sharper</text>
+      </svg>
     </section>
   </header>
 
@@ -246,7 +294,7 @@ h1 .hl{background:var(--lime);padding:2px 12px 6px;display:inline-block;margin-b
       <p class="intro">Marketed at every stage, not saved for the end. It is the film and the shop at once.</p>
 
       <div class="player">
-        <video controls playsinline preload="metadata" poster="">
+        <video autoplay controls playsinline preload="metadata" poster="">
           <source src="pvideo.mp4" type="video/mp4">
         </video>
       </div>
