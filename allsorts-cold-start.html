@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Allsorts cold start opportunity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#efeee9;
+  --ink:#1a1a1a;
+  --dark:#232320;
+  --lime:#e8f26a;
+  --red:#e6285a;
+  --muted:#6b6b66;
+  --card:#ffffff;
+  --line:#e2e1da;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1400px;margin:0 auto;padding:32px 20px 48px}
+
+/* ---------- title ---------- */
+.masthead{display:grid;grid-template-columns:minmax(300px,1fr) 1.45fr;gap:28px;align-items:start}
+.title-block{position:relative}
+h1{
+  font-weight:300;font-size:clamp(38px,5.2vw,62px);line-height:1.02;
+  margin:0;color:var(--red);letter-spacing:-.5px;
+}
+h1 .hl{background:var(--lime);padding:2px 12px 6px;display:inline-block;margin-bottom:4px}
+.struck{position:relative;display:inline-block}
+.struck svg{position:absolute;left:-4%;top:42%;width:108%;height:40px;overflow:visible;pointer-events:none}
+.struck svg path{stroke:var(--red);stroke-width:4;fill:none;stroke-linecap:round}
+.opp{
+  font-family:'Caveat',cursive;font-weight:700;
+  color:var(--red);font-size:clamp(44px,6vw,74px);
+  display:inline-block;transform:rotate(-3deg);line-height:.9;
+  margin-left:10px;white-space:nowrap;
+}
+.lede{
+  border-left:3px solid var(--red);padding:2px 0 2px 16px;margin-top:22px;
+  max-width:48ch;color:#3a3a37;
+}
+.lede b{color:var(--ink)}
+
+/* ---------- cycle ---------- */
+.cycle{background:var(--dark);color:#fff;border-radius:6px;padding:22px 24px 26px}
+.kicker{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--lime);font-weight:700;margin:0 0 18px
+}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.node{
+  flex:1 1 150px;min-width:140px;text-align:center;border-radius:4px;
+  padding:14px 12px;font-weight:700;font-size:14px;line-height:1.25
+}
+.node.dark{background:#333330;color:#fff;border:1px solid #4a4a45}
+.node.lime{background:var(--lime);color:#1a1a1a}
+.arrow{flex:0 0 auto;color:var(--lime);font-size:12px;text-align:center;color:#cfcfc6}
+.arrow .glyph{display:block;color:var(--lime);font-size:16px;line-height:1}
+.loop{
+  margin-top:16px;border-top:1px solid var(--lime);padding-top:10px;
+  text-align:center;font-size:13px;color:#d9d9cf
+}
+
+/* ---------- main grid ---------- */
+.main{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:26px;align-items:start}
+.stages{display:flex;flex-direction:column;gap:18px}
+.stage{
+  background:var(--card);border-left:4px solid var(--red);border-radius:4px;
+  padding:20px 22px 22px;
+}
+.stage-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.tag{font-size:12px;letter-spacing:.22em;color:var(--red);font-weight:700}
+.stage-head h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-.2px}
+.note{margin-left:auto;font-style:italic;color:var(--muted);font-size:13px}
+.cols{display:grid;gap:22px}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.c2{grid-template-columns:repeat(2,1fr)}
+.item{display:flex;flex-direction:column}
+.item h3{margin:0 0 6px;font-size:15px;font-weight:700}
+.item p{margin:0 0 16px;font-size:14px;color:#4b4b47}
+.does{
+  margin-top:auto;border-top:1px solid var(--line);padding-top:10px;
+  color:var(--red);font-size:13px;font-weight:700
+}
+
+/* ---------- side ---------- */
+.side{background:var(--dark);color:#fff;border-radius:4px;padding:22px;position:sticky;top:20px}
+.side h2{margin:0 0 10px;color:var(--lime);font-size:22px;font-weight:700}
+.side .intro{font-size:14px;color:#cdcdc4;margin:0 0 18px}
+.feat{border-top:1px solid #3d3d38;padding:12px 0;font-weight:700;font-size:14px}
+.feat:first-of-type{border-top:1px solid #3d3d38}
+.closer{margin-top:18px;color:var(--lime);font-size:14px;line-height:1.5}
+.player{margin:18px 0 6px;border-radius:8px;overflow:hidden;background:#000;border:1px solid #3d3d38}
+.player video{display:block;width:100%;height:auto}
+.player-cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8d8d85;margin:8px 0 14px}
+
+.foot{margin-top:24px;text-align:right;color:var(--muted);font-size:13px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .c4{grid-template-columns:repeat(2,1fr)}
+  .c3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .masthead{grid-template-columns:1fr}
+  .main{grid-template-columns:1fr}
+  .side{position:static}
+}
+@media (max-width:640px){
+  .wrap{padding:22px 14px 36px}
+  .cols,.c2,.c3,.c4{grid-template-columns:1fr}
+  .flow{flex-direction:column;align-items:stretch}
+  .node{width:100%}
+  .arrow{padding:4px 0}
+  .arrow .glyph{transform:rotate(90deg)}
+  .note{margin-left:0;flex-basis:100%}
+  .opp{margin-left:0;display:block}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="title-block">
+      <h1>
+        <span class="hl">The cold start</span><br>
+        <span class="struck">problem
+          <svg viewBox="0 0 200 30" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2 18 C 40 8, 90 24, 130 12 S 185 16, 198 10"/>
+          </svg>
+        </span><span class="opp">opportunity</span>
+      </h1>
+      <p class="lede">Supply is already solved. We shoot our own films, so we are not waiting for creators to post. And we curate the brands ourselves. <b>What is left is the user side, and that is what this page is about.</b></p>
+    </div>
+
+    <section class="cycle">
+      <p class="kicker">The cycle we are building</p>
+      <div class="flow">
+        <div class="node dark">Audience</div>
+        <div class="arrow"><span class="glyph">&#10230;</span>come for</div>
+        <div class="node lime">Hosts and<br>value-driven content</div>
+        <div class="arrow"><span class="glyph">&#10230;</span>they buy</div>
+        <div class="node lime">Relevant curation,<br>with video proof</div>
+      </div>
+      <p class="loop">&#8630; reviews and watch data make both sharper &#8631;</p>
+    </section>
+  </header>
+
+  <div class="main">
+    <div class="stages">
+
+      <section class="stage">
+        <div class="stage-head">
+          <span class="tag">TOFU</span>
+          <h2>Getting known</h2>
+          <span class="note">no purchase required · paid media off</span>
+        </div>
+        <div class="cols c3">
+          <div class="item">
+            <h3>Campus and pop culture</h3>
+            <p>The app is where you check what is happening on campus, what is trending, and what people are buying. Fest coverage sits here.</p>
+            <div class="does">What it does: gives people a reason to open the app</div>
+          </div>
+          <div class="item">
+            <h3>Casting breakout talent</h3>
+            <p>Auditions on campus. We are looking for people who can perform. Follower count is not a filter.</p>
+            <div class="does">What it does: creates our hosts</div>
+          </div>
+          <div class="item">
+            <h3>Themed club nights</h3>
+            <p>Top clubs only. Each party has a theme — say K-Pop. We sell that theme's merch, and your order is the entry.</p>
+            <div class="does">What it does: creates the first purchase</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage">
+        <div class="stage-head">
+          <span class="tag">MOFU</span>
+          <h2>Getting trusted</h2>
+          <span class="note">the main job of the platform</span>
+        </div>
+        <div class="cols c4">
+          <div class="item">
+            <h3>Tutorials and explainers</h3>
+            <p>Insightful and engaging videos that help you choose properly. Seeded on Instagram and YouTube first, then brought to the app.</p>
+            <div class="does">What it does: builds trust in what we sell</div>
+          </div>
+          <div class="item">
+            <h3>Product checks</h3>
+            <p>Every product clears several checkpoints before listing. No false claims. Quality verified.</p>
+            <div class="does">What it does: makes the claims believable</div>
+          </div>
+          <div class="item">
+            <h3>Rewarded peer reviews</h3>
+            <p>Real buyers are rewarded for reviewing. Peers, not paid influencers.</p>
+            <div class="does">What it does: fills a new app with real reviews</div>
+          </div>
+          <div class="item">
+            <h3>Guided shopping</h3>
+            <p>A 19-year-old knows the problem, not the product name. The app learns from what you watch, pause and rewatch.</p>
+            <div class="does">What it does: teaches the app who you are</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stage">
+        <div class="stage-head">
+          <span class="tag">BOFU</span>
+          <h2>Getting bought</h2>
+          <span class="note">paid media on</span>
+        </div>
+        <div class="cols c2">
+          <div class="item">
+            <h3>Viral campaigns</h3>
+            <p>Built on real buyer pain points, real use cases and a strong aesthetic. Sharp and funny, never a product demo.</p>
+            <div class="does">What it does: grows the audience fast</div>
+          </div>
+          <div class="item">
+            <h3>Free gifts and customisation</h3>
+            <p>Small things in the box — pimple patches, hangover kits. And ways to make it yours: bedazzled bottles, bag charms.</p>
+            <div class="does">What it does: turns an order into something worth posting</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="side">
+      <p class="kicker">Across the funnel</p>
+      <h2>The shoppable player</h2>
+      <p class="intro">Marketed at every stage, not saved for the end. It is the film and the shop at once.</p>
+
+      <div class="player">
+        <video controls playsinline preload="metadata" poster="">
+          <source src="pvideo.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="feat">Tap to shop</div>
+      <div class="feat">Live variant swapping</div>
+      <div class="feat">AR placement</div>
+      <div class="feat">Photoreal 3D textures</div>
+      <div class="feat">Virtual try-ons</div>
+      <div class="feat">3D lift-out</div>
+
+      <p class="closer">This is the reason to buy here and not on Nykaa. So we market the features themselves, at every stage.</p>
+    </aside>
+  </div>
+
+  <p class="foot">Private and Confidential</p>
+</div>
+</body>
+</html>
